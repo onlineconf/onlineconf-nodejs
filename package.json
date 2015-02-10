@@ -1,0 +1,17 @@
+{
+    "name": "onlineconf",
+    "version": "0.0.0",
+    "description": "OnlineConf client for Node.js",
+    "private": true,
+    "license": "mail.ru",
+    "keywords": ["my.mail.ru", "config"],
+    "bugs": { "email": "a.mashanov@corp.mail.ru" },
+    "author": {
+        "name": "Aleksey Mashanov",
+        "email": "a.mashanov@corp.mail.ru"
+    },
+    "main": "onlineconf.js",
+    "dependencies": {
+        "debug": "~0"
+    }
+}
