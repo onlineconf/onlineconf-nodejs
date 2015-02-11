@@ -17,6 +17,8 @@ Requires: npm(debug)
 BuildRequires: nodejs-devel
 BuildRequires: nodejs-packaging
 
+Provides: npm(%{npm_name})
+
 BuildRoot:     %{_tmppath}/%{name}-%{?version}-%{?release}-buildroot
 BuildArch:     noarch
 ExclusiveArch: %{nodejs_arches} noarch
