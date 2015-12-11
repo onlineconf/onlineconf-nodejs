@@ -74,7 +74,7 @@ OnlineConf.prototype._initWatcher = function () {
     var self = this;
     var basename = path.basename(this.filename);
     fs.watch(path.dirname(this.filename), function (event, filename) {
-        if (event === "rename" && filename === basename)
+        if (filename === basename)
             self.reload();
     });
 };
@@ -107,4 +107,10 @@ exports.get = function (path) {
     exports.loadSync();
     exports.get = function (path) { return onlineconf.get(path) };
     return exports.get(path);
+};
+
+exports.on = function () {
+    exports.loadSync();
+    onlineconf.on.apply(onlineconf, arguments);
+    return onlineconf;
 };
