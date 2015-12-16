@@ -114,3 +114,9 @@ exports.on = function () {
     onlineconf.on.apply(onlineconf, arguments);
     return onlineconf;
 };
+
+exports.emit = function () {
+    onlineconf.emit.apply(onlineconf, arguments);
+
+    return onlineconf;
+};
