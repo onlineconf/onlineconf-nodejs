@@ -6,15 +6,19 @@ var debug = require('debug')('onlineconf');
 
 util.inherits(OnlineConf, EventEmitter);
 
-function OnlineConf(filename, callback) {
+function OnlineConf(filename, options) {
     EventEmitter.call(this);
-    this.filename = path.resolve('/usr/local/etc/onlineconf', filename + '.conf');
-    this._initWatcher();
-    if (callback) {
-        this.once('reload', callback);
-        this.reload();
+    if (!options || !options.isTest) {
+        this.filename = path.resolve('/usr/local/etc/onlineconf', filename + '.conf');
+        this._initWatcher();
+        if (options && options.callback) {
+            this.once('reload', options.callback);
+            this.reload();
+        } else {
+            this.reloadSync();
+        }
     } else {
-        this.reloadSync();
+        this.config = {};
     }
 }
 
@@ -83,13 +87,20 @@ OnlineConf.prototype.get = function (path) {
     return this.config[path];
 };
 
+OnlineConf.prototype.set = function (path, value) {
+    this.config[path] = value;
+    return this;
+};
+
 var onlineconf;
 
 exports.OnlineConf = OnlineConf;
 
 exports.load = function (callback) {
     if (!onlineconf) {
-        onlineconf = new OnlineConf('TREE', callback);
+        onlineconf = new OnlineConf('TREE', {
+            callback: callback
+        });
     } else if (onlineconf.config) {
         callback.call(onlineconf);
     } else {
@@ -109,6 +120,12 @@ exports.get = function (path) {
     return exports.get(path);
 };
 
+exports.set = function (path, value) {
+    exports.loadSync();
+    exports.set = function (path, value) { return onlineconf.set(path, value) };
+    return exports.set(path, value);
+};
+
 exports.on = function () {
     exports.loadSync();
     onlineconf.on.apply(onlineconf, arguments);
@@ -117,6 +134,16 @@ exports.on = function () {
 
 exports.emit = function () {
     onlineconf.emit.apply(onlineconf, arguments);
+
+    return onlineconf;
+};
+
+exports.initTest = function () {
+    if (!(onlineconf && onlineconf.config)) {
+        onlineconf = new OnlineConf('TREE', {
+            isTest: true
+        });
+    }
 
     return onlineconf;
 };
