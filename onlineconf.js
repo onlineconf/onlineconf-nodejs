@@ -32,9 +32,9 @@ OnlineConf.prototype.reload = function () {
 };
 
 OnlineConf.prototype.reloadSync = function () {
-    var data = fs.readFileSync(this.filename, { encoding: 'utf8' });
+    var data = fs.readFileSync(this.filename, { encoding: 'utf8' }) || '';
     var config = {};
-    var tail = this._parse(data, config);
+    var tail = this._parse(data.trim(), config);
     this._finalize(tail, config);
 };
 
