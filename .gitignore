@@ -1,2 +1,8 @@
 node_modules
 .idea
+.nyc_output
+.tmp
+dist
+coverage
+tmp
+package-lock.json
