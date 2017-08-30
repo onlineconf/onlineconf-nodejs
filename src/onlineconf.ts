@@ -115,7 +115,7 @@ export class OnlineConf extends EventEmitter {
     protected _initWatcher() {
         let basename: string = path.basename(this.filename);
 
-        fs.watch(path.dirname(this.filename), (event: Event, filename: string) => {
+        fs.watch(path.dirname(this.filename), {}, (event: string, filename: string) => {
             if (filename === basename) {
                 this.reload();
             }
