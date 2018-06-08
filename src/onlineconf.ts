@@ -126,7 +126,7 @@ export class OnlineConf extends EventEmitter {
 
 let onlineconf: OnlineConf;
 
-export function load(callback: Function, filename?: string, options?: any) {
+export function load(callback: (...args: any[]) => void, filename?: string, options?: any) {
     if (!onlineconf) {
         onlineconf = new OnlineConf(filename || 'TREE', _.assign({
             callback: callback
