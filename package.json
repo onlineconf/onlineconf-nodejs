@@ -1,11 +1,12 @@
 {
 	"name": "onlineconf",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "OnlineConf client for Node.js",
 	"main": "dist/onlineconf",
 	"typings": "dist/onlineconf",
 	"license": "mail.ru",
 	"scripts": {
+		"clean": "rm -rf ./dist",
 		"ts": "./node_modules/.bin/tsc",
 		"lint": "./node_modules/.bin/tslint ./src/**/*.ts",
 		"check": "npm run lint && npm run test && ./bin/check-coverage",
@@ -14,7 +15,7 @@
 		"coverage-server": "./node_modules/.bin/http-server ./coverage",
 		"build": "npm run ts",
 		"dev": "./node_modules/.bin/tsc -w",
-		"prepublish": "npm run check && npm run build"
+		"prepublish": "npm run clean && npm run build && npm run check"
 	},
 	"keywords": [
 		"my.mail.ru",
