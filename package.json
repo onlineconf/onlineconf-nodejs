@@ -1,54 +1,54 @@
 {
-  "name": "onlineconf",
-  "version": "1.0.0",
-  "description": "OnlineConf client for Node.js",
-  "private": true,
-  "main": "dist/onlineconf",
-  "typings": "dist/onlineconf",
-  "license": "mail.ru",
-  "scripts": {
-    "ts": "./node_modules/.bin/tsc",
-    "lint": "./node_modules/.bin/tslint ./src/**/*.ts",
-    "check": "npm run lint && npm run test && ./bin/check-coverage",
-    "test": "./node_modules/.bin/mocha ./tests/**/*.js",
-    "coverage": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/mocha ./tests/**/*.js",
-    "coverage-server": "./node_modules/.bin/http-server ./coverage",
-    "build": "npm run ts",
-    "dev": "./node_modules/.bin/tsc -w",
-    "postinstall": "npm run build"
-  },
-  "keywords": [
-    "my.mail.ru",
-    "config"
-  ],
-  "bugs": {
-    "email": "a.mashanov@corp.mail.ru"
-  },
-  "author": {
-    "name": "Aleksey Mashanov",
-    "email": "a.mashanov@corp.mail.ru"
-  },
-  "devDependencies": {
-    "http-server": "^0.10.0",
-    "mocha": "^3.4.2",
-    "nyc": "^11.0.3",
-    "tslint": "^5.4.3"
-  },
-  "nyc": {
-    "extension": [
-      ".ts"
-    ],
-    "exclude": [
-      "**/*.d.ts",
-      "tests/**/*"
-    ]
-  },
-  "dependencies": {
-    "lodash": "^4.17.4",
-    "typescript": "^2.3.3",
-    "source-map-support": "^0.4.15",
-    "@types/lodash": "^4.14.68",
-    "@types/mocha": "^2.2.41",
-    "@types/node": "^10.5.4"
-  }
+	"name": "@my/onlineconf",
+	"version": "1.0.0",
+	"description": "OnlineConf client for Node.js",
+	"main": "dist/onlineconf",
+	"typings": "dist/onlineconf",
+	"license": "mail.ru",
+	"scripts": {
+		"clean": "rm -rf ./dist",
+		"ts": "./node_modules/.bin/tsc",
+		"lint": "./node_modules/.bin/tslint ./src/**/*.ts",
+		"check": "npm run lint && npm run test && ./bin/check-coverage",
+		"test": "./node_modules/.bin/mocha ./tests/**/*.js",
+		"coverage": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/mocha ./tests/**/*.js",
+		"coverage-server": "./node_modules/.bin/http-server ./coverage",
+		"build": "npm run ts",
+		"dev": "./node_modules/.bin/tsc -w",
+		"prepublish": "npm run clean && npm run build && npm run check"
+	},
+	"keywords": [
+		"my.mail.ru",
+		"config"
+	],
+	"bugs": {
+		"email": "a.mashanov@corp.mail.ru"
+	},
+	"author": {
+		"name": "Aleksey Mashanov",
+		"email": "a.mashanov@corp.mail.ru"
+	},
+	"devDependencies": {
+		"http-server": "^0.10.0",
+		"mocha": "^3.4.2",
+		"nyc": "^11.0.3",
+		"tslint": "^5.4.3",
+		"typescript": "^2.3.3",
+		"source-map-support": "^0.4.15",
+		"@types/lodash": "^4.14.68",
+		"@types/mocha": "^2.2.41",
+		"@types/node": "^10.3.2"
+	},
+	"nyc": {
+		"extension": [
+			".ts"
+		],
+		"exclude": [
+			"**/*.d.ts",
+			"tests/**/*"
+		]
+	},
+	"dependencies": {
+		"lodash": "^4.17.4"
+	}
 }
