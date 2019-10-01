@@ -4,7 +4,7 @@
 	"description": "OnlineConf client for Node.js",
 	"main": "dist/onlineconf",
 	"typings": "dist/onlineconf",
-	"license": "mail.ru",
+	"license": "MIT",
 	"scripts": {
 		"clean": "rm -rf ./dist",
 		"ts": "./node_modules/.bin/tsc",
