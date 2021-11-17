@@ -90,7 +90,7 @@ describe('Onlineconf', () => {
                     if (item.match(/^\s*(\S+)\s+(.+)$/)) {
                         let parts = item.split(' '),
                             key = parts[0],
-                            value = parts.slice(1).join(' ').replace('\\n', '\n').replace('\\r', '\r');
+                            value = parts.slice(1).join(' ').replace(/\\n/g, '\n').replace(/\\r/g, '\r');
 
                         if (key.match(/:JSON$/)) {
                             key = key.replace(/:JSON$/, '');
@@ -104,6 +104,7 @@ describe('Onlineconf', () => {
                 });
 
             assert.deepEqual(config, onlineconf.getConfig());
+            assert.equal(onlineconf.getConfig()['/bar/foo/baz/qux'], 'bar\nfoo\n\rbaz\r\nqux');
 
             done();
         });

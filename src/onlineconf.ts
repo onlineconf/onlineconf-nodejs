@@ -85,7 +85,7 @@ export class OnlineConf extends EventEmitter {
                 let key: string = m[1],
                     value: string = m[2];
 
-                value = value.replace('\\n', '\n').replace('\\r', '\r');
+                value = value.replace(/\\n/g, '\n').replace(/\\r/g, '\r');
                 let mJson: string[] = key.match(/^(.+):JSON$/);
 
                 if (mJson) {
