@@ -1,6 +1,6 @@
 {
 	"name": "onlineconf",
-	"version": "1.0.2",
+	"version": "1.0.4",
 	"description": "OnlineConf client for Node.js",
 	"main": "dist/onlineconf",
 	"typings": "dist/onlineconf",
@@ -15,7 +15,7 @@
 		"coverage-server": "./node_modules/.bin/http-server ./coverage",
 		"build": "npm run ts",
 		"dev": "./node_modules/.bin/tsc -w",
-		"prepublish": "npm run clean && npm run build && npm run check"
+		"prepublishOnly": "npm run clean && npm run build && npm run check && bump"
 	},
 	"keywords": [
 		"config"
@@ -28,15 +28,16 @@
 		"email": "a.mashanov@corp.mail.ru"
 	},
 	"devDependencies": {
+		"@types/lodash": "^4.14.68",
+		"@types/mocha": "^2.2.41",
+		"@types/node": "^17.0.21",
 		"http-server": "^0.10.0",
 		"mocha": "^3.4.2",
 		"nyc": "^11.0.3",
-		"tslint": "^5.4.3",
-		"typescript": "^2.3.3",
 		"source-map-support": "^0.4.15",
-		"@types/lodash": "^4.14.68",
-		"@types/mocha": "^2.2.41",
-		"@types/node": "^10.3.2"
+		"tslint": "^5.4.3",
+		"typescript": "^4.6.2",
+		"version-bump-prompt": "^6.1.0"
 	},
 	"nyc": {
 		"extension": [
