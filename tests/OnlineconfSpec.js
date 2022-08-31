@@ -54,6 +54,8 @@ describe('Onlineconf', () => {
             }
 
             fs.writeFile(`./.tmp/${filename}.conf`, '/foo/bar foobar\n#EOF', (err) => {
+                let isReloaded = false;
+
                 onlineconf = new OnlineConf.OnlineConf(filename, {
                     rootDir: './.tmp'
                 });
@@ -61,8 +63,11 @@ describe('Onlineconf', () => {
                 assert.equal(onlineconf.get('/bar/foo'), undefined);
 
                 onlineconf.on('reload', () => {
-                    assert.equal(onlineconf.get('/bar/foo'), 'barfoo');
-                    done();
+                    if (!isReloaded) {
+                        assert.equal(onlineconf.get('/bar/foo'), 'barfoo');
+                        done();
+                        isReloaded = true;
+                    }
                 });
 
                 fs.writeFile(`./.tmp/${filename}.conf`, '/foo/bar foobar\n/bar/foo barfoo\n#EOF', (err) => {
