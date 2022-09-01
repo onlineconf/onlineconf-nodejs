@@ -1,6 +1,6 @@
 {
 	"name": "onlineconf",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "OnlineConf client for Node.js",
 	"main": "dist/onlineconf",
 	"typings": "dist/onlineconf",
