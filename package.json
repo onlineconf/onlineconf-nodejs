@@ -32,7 +32,7 @@
 		"@types/mocha": "^2.2.41",
 		"@types/node": "^17.0.21",
 		"http-server": "^0.10.0",
-		"mocha": "^3.4.2",
+		"mocha": "^10.2.0",
 		"nyc": "^11.0.3",
 		"source-map-support": "^0.4.15",
 		"tslint": "^5.4.3",
